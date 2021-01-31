@@ -26,6 +26,7 @@ export default {
     data(){
         return {
             cartItems,
+            title:'This is a Cart Item',
         }},
         computed:{
             totalPrice(){
