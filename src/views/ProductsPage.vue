@@ -2,18 +2,8 @@
 <div>
 <h1>{{title}}</h1>
 <div class="page-wrap">
-<div class="grid-wrap">
-        <div v-for="product in products"  class="product-item" v-bind:key="product.id">
-<img v-bind:src="product.imageUrl"/>
 
-<h3 class="produt-name">{{product.name}}</h3>
-
-<router-link v-bind:to="'/products/'+ product.id">
-<button>view details</button>
-</router-link>
-
-</div>
-</div>
+<ProductsGrid :products="products"/>
 </div>
 </div>
     
@@ -21,9 +11,13 @@
 
 <script>
 import {products} from '../fake-data';
+import ProductsGrid from '../components/ProductGrid';
 export default {
     
     name:'ProductsPage',
+    components:{
+      ProductsGrid,
+    },
     data(){
         return {
             title:'hello',
@@ -33,42 +27,3 @@ export default {
     
 };
 </script>
-
-<style scoped>
-  .grid-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 16px;
-  }
-
-  .product-item {
-    align-items: center;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px #888;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2%;
-    padding: 20px;
-    position: relative;
-    width: 32%;
-  }
-
-  .product-name {
-    margin-bottom: 0;
-  }
-
-  img {
-    height: 200px;
-    width: 200px;
-  }
-
-  a {
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-  }
-</style>
-

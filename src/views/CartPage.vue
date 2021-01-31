@@ -2,27 +2,26 @@
  <div>
 <h1>{{title}}</h1>
 <div class="page-wrap">
+<ProductsList :products="cartItems"/>
 
-<div v-for="product in cartItems"  class="product-container" :key="product.id">
-<img clas="product-image" :src="product.imageUrl"/>
-<div class="details-wrap">
-<h3>{{product.name}}</h3>
-<h3>${{product.price}}</h3>
-</div>
 <button class="remove-button">Remove from cart</button>
 
 </div>
 <h3 id="total-price">Total: $ {{ totalPrice }}</h3>
 <button id="checkout-button">Proceed to checkout</button>
 </div>
-</div>
+
 
 </template>
 
 <script>
 import {cartItems} from '../fake-data';
+import ProductsList from '../components/ProductsList';
 export default {
     name:'CartPage',
+    components: {
+      ProductsList,
+      },
     data(){
         return {
             cartItems,
@@ -58,27 +57,5 @@ export default {
     width: 100%;
   }
 
-  .product-container {
-    align-content: 'center';
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    padding: 16px;
-    width: 100%;
-  }
-
-  .product-image {
-    flex: 1;
-    height: 100px;
-    max-width: 100px;
-  }
-
-  .details-wrap {
-    padding: 0 16px;
-    flex: 3;
-  }
-
-  .remove-button {
-    flex: 1;
-    margin: auto;
-  }
+  
 </style>
